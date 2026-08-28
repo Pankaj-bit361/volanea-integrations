@@ -1,0 +1,13 @@
+{
+  "name": "@volanea/integrations-core",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Shared internals for Volanea's framework integrations. Never published \u2014 each provider bundles it at build time so its tarball has zero runtime dependencies.",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "test": "npm run build && node --test \"test/*.test.js\""
+  }
+}

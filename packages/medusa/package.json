@@ -1,0 +1,50 @@
+{
+  "name": "medusa-provider-notification-volanea",
+  "version": "1.0.0",
+  "description": "Volanea notification provider for Medusa v2 \u2014 send Medusa's transactional email (order confirmations, password resets, invites) through the Volanea API.",
+  "keywords": [
+    "medusa",
+    "medusa-v2",
+    "medusa-plugin",
+    "medusa-plugin-integration",
+    "medusa-provider",
+    "notification",
+    "email",
+    "volanea",
+    "transactional-email"
+  ],
+  "homepage": "https://volanea.com/docs/integrations/medusa",
+  "bugs": {
+    "url": "https://github.com/Pankaj-bit361/volanea-integrations/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pankaj-bit361/volanea-integrations.git",
+    "directory": "packages/medusa"
+  },
+  "license": "MIT",
+  "author": "Volanea <support@volanea.com> (https://volanea.com)",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "build": "tsup",
+    "test": "npm run build && node --test \"test/*.test.js\"",
+    "prepublishOnly": "npm run build",
+    "prebuild": "npm run build -w @volanea/integrations-core"
+  },
+  "peerDependencies": {
+    "@medusajs/framework": "^2.5.0"
+  },
+  "devDependencies": {
+    "@medusajs/framework": "^2.5.0",
+    "@volanea/integrations-core": "*"
+  }
+}

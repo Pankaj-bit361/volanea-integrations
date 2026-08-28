@@ -1,0 +1,59 @@
+{
+  "name": "strapi-provider-email-volanea",
+  "version": "1.0.0",
+  "description": "Volanea email provider for Strapi v5 \u2014 send Strapi's transactional email (admin invites, password resets, user confirmations) through the Volanea API.",
+  "keywords": [
+    "strapi",
+    "strapi-provider",
+    "strapi-email",
+    "strapi-provider-email",
+    "email",
+    "volanea",
+    "transactional-email",
+    "ses"
+  ],
+  "homepage": "https://volanea.com/docs/integrations/strapi",
+  "bugs": {
+    "url": "https://github.com/Pankaj-bit361/volanea-integrations/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pankaj-bit361/volanea-integrations.git",
+    "directory": "packages/strapi"
+  },
+  "license": "MIT",
+  "author": "Volanea <support@volanea.com> (https://volanea.com)",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "strapi": {
+    "name": "volanea",
+    "displayName": "Volanea",
+    "description": "Send Strapi transactional email through Volanea.",
+    "kind": "provider"
+  },
+  "scripts": {
+    "build": "tsup",
+    "test": "npm run build && node test/provider.test.js",
+    "prepublishOnly": "npm run build",
+    "prebuild": "npm run build -w @volanea/integrations-core"
+  },
+  "peerDependencies": {
+    "@strapi/strapi": "^5.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@strapi/strapi": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@volanea/integrations-core": "*"
+  }
+}
