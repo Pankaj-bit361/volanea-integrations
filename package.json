@@ -2,7 +2,7 @@
   "name": "@volanea/integrations",
   "version": "0.0.0",
   "private": true,
-  "description": "Volanea's framework integrations \u2014 one shared core, one published package per framework.",
+  "description": "Volanea's framework integrations — one shared core, one published package per framework.",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -15,7 +15,7 @@
     "node": ">=20.0.0"
   },
   "scripts": {
-    "build": "npm run build -w @volanea/integrations-core && npm run build -w strapi-provider-email-volanea -w medusa-provider-notification-volanea",
+    "build": "npm run build -w @volanea/integrations-core && npm run build -w strapi-provider-email-volanea -w medusa-provider-notification-volanea -w n8n-nodes-volanea",
     "test": "npm run test --workspaces --if-present",
     "clean": "rm -rf packages/*/dist"
   },
