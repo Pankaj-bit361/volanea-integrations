@@ -5,6 +5,7 @@ const crypto = require('node:crypto');
 /** api.volanea.com unless overridden (`zapier env:set` or a local test run). */
 const apiUrl = () => (process.env.VOLANEA_API_URL || 'https://api.volanea.com').replace(/\/+$/, '');
 
+
 /** Unwraps `{ success, data }` and turns API errors into readable Zapier errors. */
 const data = (z, response) => {
   const body = response.data ?? {};
@@ -15,6 +16,13 @@ const data = (z, response) => {
   }
   return body.data ?? body;
 };
+
+/**
+ * A JSON body as z.request options. Pre-serialized on purpose: core strips every
+ * `{{…}}` from the top-level string fields of an object body (normalizeEmptyBodyFields),
+ * which would blank the template placeholders Volanea is meant to render.
+ */
+const json = (body) => ({ body: JSON.stringify(body), headers: { 'Content-Type': 'application/json' } });
 
 /** Comma-separated input → trimmed list. */
 const list = (value) =>
@@ -32,4 +40,4 @@ const verifySignature = (header, rawBody, secret, now = Date.now()) => {
   return expected.length === got.length && crypto.timingSafeEqual(expected, got);
 };
 
-module.exports = { apiUrl, data, list, verifySignature };
+module.exports = { apiUrl, data, json, list, verifySignature };

@@ -1,6 +1,6 @@
 'use strict';
 
-const { apiUrl, data, verifySignature } = require('../lib');
+const { apiUrl, data, json, verifySignature } = require('../lib');
 
 const EVENTS = {
   'email.received': 'Email received (inbox or inbound address)',
@@ -53,7 +53,7 @@ module.exports = {
         await z.request({
           method: 'POST',
           url: `${apiUrl()}/v1/webhooks`,
-          body: { url: bundle.targetUrl, description: 'Zapier', events: bundle.inputData.events },
+          ...json({ url: bundle.targetUrl, description: 'Zapier', events: bundle.inputData.events }),
           skipThrowForStatus: true,
         }),
       ),

@@ -1,6 +1,6 @@
 'use strict';
 
-const { apiUrl, data, list } = require('../lib');
+const { apiUrl, data, json, list } = require('../lib');
 
 module.exports = {
   key: 'send_email',
@@ -26,7 +26,7 @@ module.exports = {
       for (const key of ['from', 'fromName', 'subject', 'html', 'text', 'templateId', 'replyTo', 'type']) if (d[key]) body[key] = d[key];
       if (d.variables && Object.keys(d.variables).length) body.variables = d.variables;
       if (!body.html && !body.text && !body.templateId) throw new z.errors.Error('Add an HTML body, a plain-text body or a template ID.', 'InvalidData', 400);
-      const result = data(z, await z.request({ method: 'POST', url: `${apiUrl()}/v1/send`, body, skipThrowForStatus: true }));
+      const result = data(z, await z.request({ method: 'POST', url: `${apiUrl()}/v1/send`, ...json(body), skipThrowForStatus: true }));
       const first = result.messages?.[0] ?? {};
       // Zapier wants one flat object: lead with the first message, keep the rest.
       return { id: first.id ?? null, status: first.status ?? null, to: first.to ?? null, testMode: result.testMode, messages: result.messages };

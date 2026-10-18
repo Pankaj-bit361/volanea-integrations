@@ -47,6 +47,9 @@ test('Send Email sends and returns the message id', live, async () => {
   });
   assert.match(res.id, /^email-/);
   assert.equal(res.to, 'zap@example.com');
+  // {{placeholders}} must reach Volanea untouched (core strips them from object bodies).
+  const sent = await appTester(async (z) => (await z.request({ url: `${process.env.VOLANEA_API_URL}/v1/emails/${res.id}` })).data.data, { authData });
+  assert.equal(sent.subject, 'Hi Ada');
 });
 
 test('Send Email surfaces the API reason for an unverified sender', live, async () => {

@@ -1,6 +1,6 @@
 'use strict';
 
-const { apiUrl, data } = require('../lib');
+const { apiUrl, data, json } = require('../lib');
 
 module.exports = {
   key: 'track_event',
@@ -16,7 +16,7 @@ module.exports = {
       const d = bundle.inputData;
       const body = { name: String(d.name).trim(), email: String(d.email).trim() };
       if (d.data && Object.keys(d.data).length) body.data = d.data;
-      const result = data(z, await z.request({ method: 'POST', url: `${apiUrl()}/v1/events`, body, skipThrowForStatus: true }));
+      const result = data(z, await z.request({ method: 'POST', url: `${apiUrl()}/v1/events`, ...json(body), skipThrowForStatus: true }));
       return { id: result.eventId ?? null, ...result };
     },
     sample: { id: 'evt-1a2b3c', eventId: 'evt-1a2b3c', name: 'order_completed', contactId: 'c-4d5e6f' },
