@@ -4,7 +4,7 @@ Send an email through [Volanea](https://volanea.com) from any workflow: release 
 deploy alerts, nightly reports, failed-build pings.
 
 ```yaml
-- uses: volanea/send-email@v1
+- uses: Pankaj-bit361/volanea-send-email@v1
   with:
     api-key: ${{ secrets.VOLANEA_API_KEY }}
     from: releases@yourdomain.com
@@ -16,7 +16,7 @@ deploy alerts, nightly reports, failed-build pings.
 With a saved template:
 
 ```yaml
-- uses: volanea/send-email@v1
+- uses: Pankaj-bit361/volanea-send-email@v1
   with:
     api-key: ${{ secrets.VOLANEA_API_KEY }}
     to: oncall@yourdomain.com

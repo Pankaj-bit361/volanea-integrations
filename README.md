@@ -10,7 +10,7 @@ authenticated HTTP helper, so they don't use core.)
 | [`packages/medusa`](packages/medusa) | `medusa-provider-notification-volanea` | Medusa v2 notification provider — order confirmations, password resets, invites |
 | [`packages/n8n`](packages/n8n) | `n8n-nodes-volanea` | n8n community nodes — send email, upsert contacts, track events; trigger on delivery, bounce, open, click and inbound mail |
 | [`packages/zapier`](packages/zapier) | *Zapier CLI push* | Zapier app — New Event trigger (REST hook), Send Email, Create or Update Contact, Track Event |
-| [`packages/github-action`](packages/github-action) | *its own repo* | `volanea/send-email` GitHub Action for CI — release notes, deploy alerts |
+| [`packages/github-action`](packages/github-action) | *its own repo* | `Pankaj-bit361/volanea-send-email` GitHub Action for CI — release notes, deploy alerts |
 | [`packages/core`](packages/core) | *never published* | Shared HTTP client, error mapping, skip handling, address parsing |
 
 ## Zero runtime dependencies, by construction
