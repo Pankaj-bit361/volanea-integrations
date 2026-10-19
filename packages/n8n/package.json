@@ -1,0 +1,55 @@
+{
+  "name": "n8n-nodes-volanea",
+  "version": "1.0.0",
+  "description": "Volanea for n8n — send email, upsert contacts and track events, and start workflows from delivery, bounce, open, click and inbound-mail events.",
+  "keywords": [
+    "n8n-community-node-package",
+    "n8n",
+    "volanea",
+    "email",
+    "transactional-email",
+    "webhooks"
+  ],
+  "homepage": "https://volanea.com/docs/integrations/n8n",
+  "bugs": {
+    "url": "https://github.com/Pankaj-bit361/volanea-integrations/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pankaj-bit361/volanea-integrations.git",
+    "directory": "packages/n8n"
+  },
+  "license": "MIT",
+  "author": "Volanea <support@volanea.com> (https://volanea.com)",
+  "main": "index.js",
+  "files": [
+    "dist",
+    "index.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/VolaneaApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/Volanea/Volanea.node.js",
+      "dist/nodes/VolaneaTrigger/VolaneaTrigger.node.js"
+    ]
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.json && cp nodes/Volanea/volanea.svg dist/nodes/Volanea/ && cp nodes/Volanea/volanea.svg dist/nodes/VolaneaTrigger/",
+    "test": "npm run build && node test/nodes.test.js",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  },
+  "devDependencies": {
+    "n8n-workflow": "2.16.0"
+  }
+}

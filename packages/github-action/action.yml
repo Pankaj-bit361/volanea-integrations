@@ -1,0 +1,52 @@
+name: Volanea Send Email
+description: Send an email through Volanea from a workflow — release notes, deploy alerts, nightly reports.
+author: Volanea
+branding:
+  icon: send
+  color: blue
+inputs:
+  api-key:
+    description: A Volanea secret key. Store it as a repository secret, e.g. secrets.VOLANEA_API_KEY.
+    required: true
+  to:
+    description: Recipient address, or several separated by commas or newlines (each gets its own copy, up to 50).
+    required: true
+  from:
+    description: Sender address on a domain verified in Volanea. Optional when the template has a sender.
+    required: false
+  from-name:
+    description: Sender display name.
+    required: false
+  subject:
+    description: Subject line. Required unless the template provides one.
+    required: false
+  html:
+    description: HTML body.
+    required: false
+  text:
+    description: Plain-text body.
+    required: false
+  template-id:
+    description: Send a saved template (tmpl-…) instead of a body.
+    required: false
+  variables:
+    description: 'JSON object of template variables, e.g. {"version": "1.4.0"}.'
+    required: false
+  reply-to:
+    description: Reply-To address.
+    required: false
+  idempotency-key:
+    description: Re-running the job with the same key does not send again. Defaults to the run id, attempt and job.
+    required: false
+  api-url:
+    description: Only for self-hosted or local Volanea APIs.
+    required: false
+    default: https://api.volanea.com
+outputs:
+  email-id:
+    description: The id of the first message sent.
+  email-ids:
+    description: JSON array of every message id.
+runs:
+  using: node24
+  main: index.js

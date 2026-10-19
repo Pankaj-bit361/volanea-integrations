@@ -1,12 +1,16 @@
 # Volanea integrations
 
 Framework integrations for [Volanea](https://volanea.com). One shared core, one
-published package per framework.
+published package per framework. (The n8n nodes call the API through n8n's own
+authenticated HTTP helper, so they don't use core.)
 
 | Package | npm | What it does |
 | --- | --- | --- |
 | [`packages/strapi`](packages/strapi) | `strapi-provider-email-volanea` | Strapi v5 email provider — admin invites, password resets, user confirmations |
 | [`packages/medusa`](packages/medusa) | `medusa-provider-notification-volanea` | Medusa v2 notification provider — order confirmations, password resets, invites |
+| [`packages/n8n`](packages/n8n) | `n8n-nodes-volanea` | n8n community nodes — send email, upsert contacts, track events; trigger on delivery, bounce, open, click and inbound mail |
+| [`packages/zapier`](packages/zapier) | *Zapier CLI push* | Zapier app — New Event trigger (REST hook), Send Email, Create or Update Contact, Track Event |
+| [`packages/github-action`](packages/github-action) | *its own repo* | `Pankaj-bit361/volanea-send-email` GitHub Action for CI — release notes, deploy alerts |
 | [`packages/core`](packages/core) | *never published* | Shared HTTP client, error mapping, skip handling, address parsing |
 
 ## Zero runtime dependencies, by construction
